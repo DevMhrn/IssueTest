@@ -9,6 +9,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Ping-pong health check endpoint
+app.get('/ping', (req, res) => {
+    console.log('pong');
+  res.status(200).json({ message: 'pong', timestamp: new Date().toISOString() });
+});
+
 // Routes
 app.use('/interview', mockInterviewRoutes);
 
